@@ -13,7 +13,7 @@ export default {
   },
   data() {
         return {
-            google: google
+            google: window.google
         }
     },
   greated() {
