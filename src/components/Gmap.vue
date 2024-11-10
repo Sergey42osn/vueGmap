@@ -12,6 +12,8 @@
 
 <script>
 
+import axios from 'axios'
+
 export default {
     name: 'GogleMapCustom',
     props: ['google'],
@@ -45,10 +47,18 @@ export default {
             this.Gmap = new this.google.maps.Map(this.$refs.googleMap, {
                 ...this.mapOptions
             });
+        },
+        getMarkers() {
+            let url = "../assets/markers.js";
+
+            axios.get(url)
+                .then(response => {
+                    console.log(response.data);
+                });
         }
     },
     created() {
-
+        this.getMarkers();
     },
     mounted() {
         console.log('Gmap mounted');
@@ -64,6 +74,7 @@ export default {
     width: 100%;
     min-height: 100vh;
 }
+
 .google-map {
     display: block;
     width: 50%;
